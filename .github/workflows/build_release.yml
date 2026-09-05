@@ -1,11 +1,22 @@
 name: Cmd2SMS Build / Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
   push:
     branches: [ "main" ]
-  create:
     tags:
       - '*'
+  create:
 
 env:
   PROJECTNAME: ${{ format('{0}-{1}', vars.PROJECTNAME || github.event.repository.name || 'hello-world', github.event_name == 'create' && github.ref_name || 'DEV') }}
