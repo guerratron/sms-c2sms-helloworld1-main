@@ -21,10 +21,7 @@ jobs:
     - name: SDCC-Install
       run: sudo apt update && sudo apt install sdcc gputils && sdcc --version
     - name: Exec
-      run: chmod +x c2sms.sh && ./c2sms.sh
-      with:
-        args: |
-          "-e ${{ env.PROJNAME }}"
+      run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
     - name: Build
       run: chdir "./projects/${{ env.PROJNAME }}" && make valid
     - name: Upload artifacts
