@@ -1,0 +1,7 @@
+Se necesita sdcc y ejecutar el Makefile
+
+:: Genera el .sms
+> make
+
+:: Eliminar archivos no necesarios
+> make valid

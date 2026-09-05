@@ -1,0 +1,3 @@
+Espera como parámetro el nombre del "asm" a procesar: "F=<file_name_no_ext>"
+Ejemplo:
+>make F=MyPong

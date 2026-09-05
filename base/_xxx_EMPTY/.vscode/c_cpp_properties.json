@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "SDCC",
+            "includePath": [
+                "C:\\DEVELOP\\SDCC\\include\\**",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/inc",
+                "${workspaceFolder}/assets/bg",
+                "${workspaceFolder}/assets/music",
+                "${workspaceFolder}/assets/sounds",
+                "${workspaceFolder}/assets/sprites"
+            ],
+            "defines": [
+                "_VERSION_=1",
+                "__critical=",
+                "__interrupt(IntelliSense_Hack)=",
+                "__sfr=",
+                "__at(none)=",
+                "SDCC=1",
+                "__SDCC=1",
+                "INTERRUPT(name, vector)=void name(void)",
+                "INTERRUPT_USING(name, vector, regnum)=void name(void)",
+                "NOP()=(void)(0)",
+                "_nop_()=(void)(0)",
+                //"__asm__(...)=",
+                //"__asm \n...\n __endasm;=",
+                //"__endasm;=",
+                "__naked=",
+                "__reentrant=",
+                "__bit=bool",
+                "__data=",
+                "__idata=",
+                "__pdata=",
+                "__xdata=",
+                "__bdata=",
+                "__code="
+            ],
+            "compilerPath": "C:\\DEVELOP\\SDCC\\bin\\sdcc.exe",
+            "cStandard": "c89", //"c11",
+            "intelliSenseMode": "${default}",
+            "compilerArgs": [
+                "-mz80"
+            ],
+            "browse": {},
+            "mergeConfigurations": true
+        }
+    ],
+    "version": 4
+}

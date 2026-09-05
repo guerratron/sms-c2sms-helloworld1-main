@@ -1,0 +1,13 @@
+CREAR EL PROJECTO:
+'c2sms.bat' genera el Makefile dentro de la carpeta especificada como parámetro, que a su vez debe contener 
+un archivo principal 'PROYECT_NAME.c'
+
+Luego moverse a la carpeta y ejecutar 'make' y se obtendrá el sms
+
+Se necesita sdcc y ejecutar el Makefile
+
+:: Genera el .sms
+> make
+
+:: Eliminar archivos no necesarios
+> make valid

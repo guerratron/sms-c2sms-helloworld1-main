@@ -1,0 +1,24 @@
+##############
+#   PROJECT  #
+##############
+
+# ESTABLECER EL NOMBRE DEL PROJECTO PARA SER LLAMADO DESDE EL PreMakefile Y A SU VEZ EL Makefile PRINCIPAL.
+# TAMBIEN ALGUNAS VARIABLES Y DIRECTORIOS PARA MAKEFILE
+# ESTE ARCHIVO SE HA GENERADO DINAMICAMENTE POR "c2sms.bat" PARA INCLUIRSE EN EL 'PreMakefile'
+# AUNQUE ES INOCUO, NO UTILIZAR INDEPENDIENTEMENTE.
+
+# ADMITE UN PARAMETRO OPCIONAL, EJEMPLO DE LLAMADA DESDE CMD: > make F=main2.
+
+# Capturamos el parámetro o un valor por defecto.
+PROJECT_NAME ?= MP22
+SRC_DIR=src
+BIN_DIR=bin
+LIB_DIR=lib
+# la libreria de arranque (startup) "crt0sms.s" sin extension
+CRT_S=crt0sms
+TOOLS_DIR=tools
+CHECKSUMFIX=checksumfix/checksumfix.py
+INC_DIR=-I./inc -I./assets/music -I./assets/sounds -I./assets/sprites -I./assets/bg -I./assets/fonts -I./src
+INC_DIR1=./inc;./assets/music;./assets/sounds;./assets/sprites;./assets/bg;./assets/fonts;./src
+VPATH='./${SRC_DIR};./${BIN_DIR};./${LIB_DIR};./${INC_DIR1};'
+

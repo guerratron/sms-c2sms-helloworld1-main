@@ -1,0 +1,57 @@
+name: Build / Release (OLD)
+
+on:
+  push:
+    branches: [ "main" ]
+  create:
+    tags:
+      - '*'
+
+env:
+  PROJECTNAME: ${{ format('{0}-{1}', vars.PROJECTNAME || github.event.repository.name || 'hello-world', github.event_name == 'create' && github.ref_name || 'DEV') }}
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build
+      uses: docker://retcon85/toolchain-sms:1.1
+      with:
+        args: |
+          "make clean all"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.PROJECTNAME }}
+        path: |
+          build/*.sms
+          build/*.gg
+          build/*.rom
+        if-no-files-found: error
+
+  release:
+    if: ${{ github.event_name == 'create' }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.PROJECTNAME }}
+    - name: Release
+      if: ${{ github.event_name == 'create' }}
+      # if release already exists, attach the output artifacts to it
+      # else try to create a release with a discussion post (will fail if discussion not enabled)
+      # else try to create a release without a discussion post
+      run: |
+        OUTPUTS=$({ ls *.sms; ls *.gg; ls *.rom; } 2>/dev/null | tr '\n' ' ') && \
+        echo $OUTPUTS | xargs gh release upload ${{ github.ref_name }} --clobber || \
+        echo $OUTPUTS | xargs gh release create ${{ github.ref_name }} --generate-notes --title '${{ github.repository }} ${{ github.ref_name }}' --discussion-category 'Announcements' || \
+        echo $OUTPUTS | xargs gh release create ${{ github.ref_name }} --generate-notes --title '${{ github.repository }} ${{ github.ref_name }}'
+      env:
+        GH_TOKEN: ${{ github.token }}
