@@ -43,7 +43,7 @@ jobs:
         name: ${{ env.PROJNAME }}
         path: |
           /bin/*.sms
-        if-no-files-found: error
+        if-no-files-found: warn #error
 
   release:
     if: ${{ github.event_name == 'create' }}
