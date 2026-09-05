@@ -34,7 +34,7 @@ jobs:
     - name: Exec
       run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
     - name: Build
-      run: chdir ./projects/${{ env.PROJNAME }} && make valid
+      run: cd ./projects/${{ env.PROJNAME }} && make valid
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -55,7 +55,7 @@ jobs:
       with:
         name: ${{ env.PROJNAME }}
     - name: Change Dir
-      run: chdir "./projects/${{ env.PROJNAME }}" 
+      run: cd ./projects/${{ env.PROJNAME }} 
     - name: Release
       if: ${{ github.event_name == 'create' }}
       # if release already exists, attach the output artifacts to it
