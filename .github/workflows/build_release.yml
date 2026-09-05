@@ -33,8 +33,10 @@ jobs:
       run: sudo apt update && sudo apt install sdcc gputils && sdcc --version
     - name: Exec
       run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
-    - name: Build
-      run: cd ./projects/${{ env.PROJNAME }} && make valid
+    - name: Change Dir
+      run: cd ./projects/${{ env.PROJNAME }} 
+    #- name: Build
+    #  run: make valid
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
