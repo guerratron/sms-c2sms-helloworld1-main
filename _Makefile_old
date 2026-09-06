@@ -1,0 +1,51 @@
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ::             SDCC compiling Makefile file v1.3            ::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ::
+# :: SE ESPERA "p=[PROJECT_NAME]" COMO PRIMER PARAMETRO, ESTE SERA EL NOMBRE DEL PROYECTO 
+# :: Y CREARA UN DIRECTORIO EN LA CARPETA 'projects' QUE CONTENDRA UN ARCHIVO 
+# :: PRINCIPAL '.c' CON EL MISMO NOMBRE. 
+# :: OPCIONALMENTE ADMITE UN SEGUNDO PARAMETRO "e=[ | 1]" QUE CREARA EL MISMO PROYECTO PERO VACIO.
+# :: SINO SE ENTREGAN PARAMETROS SE MOSTRARÁ LA AYUDA Y SE RETORNARÁ -1
+# :: Sintaxis de llamada:
+# ::      make  [ p=[ PROJECT_NAME ] | e=[ | 1] ]
+# :: GENERA UNA ESTRUCTURA ADECUADA DE CARPETAS PARA SEPARAR LOS DISTINTOS ARCHIVOS.
+# :: TAMBIEN PUEDE ECHARSE UN VISTAZO A "./projects/_main/" PARA OTRAS UTILIDADES.
+# ::
+# :: SE NECESITA TENER INSTALADO "SDCC" SINO FALLARA.
+# ::
+# :: by GuerraTron26 - dinertron@gmail
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ADMITE DOS PARAMETROS OPCIONALES, EJEMPLO DE LLAMADA DESDE EL INTERPRETE: > make p=main2 e=1
+
+# Capturamos el parámetro del nombre del proyecto.
+p ?= false
+# Ahora si se desea un projecto vacío (_xxx_ | _xxx_EMPTY)
+e ?= false
+# Quizás la ayuda ..
+h ?= false
+ifeq ($(p),false)
+	PROJECT_NAME = _NEW
+#PROJECT_NAME = @$(if $(strip $(p)),$(p),_NEW)
+# Parámetro para indicar ayuda
+	ifeq ($(e),false)
+		h = false
+	else
+		h = true
+	endif
+else
+	PROJECT_NAME = $(p)
+endif
+
+# Nos vamos a la ayuda
+ifeq ($(h),true)
+	echo "Ayuda"
+    return -1
+endif
+
+# Parámetro para indicar projecto vacío (_xxx_ | _xxx_EMPTY)
+ifeq ($(e),false)
+    SOURCES_NAME=_xxx_
+else
+    SOURCES_NAME=_xxx_EMPTY
+endif

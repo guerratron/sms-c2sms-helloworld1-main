@@ -145,8 +145,8 @@ SOURCES_NAME="_xxx_"
 
 # Comprueba si existe el parametro "-e" de "EMPTY" para cargar una estructura distinta
 if [ "$1" = "-e" ]; then
-    SOURCES_NAME="_xxx_EMPTY"
     PROJECT_NAME="${2:-main}"
+    SOURCES_NAME="_xxx_EMPTY"
 elif [ "${2:-}" = "-e" ]; then
     SOURCES_NAME="_xxx_EMPTY"
 fi

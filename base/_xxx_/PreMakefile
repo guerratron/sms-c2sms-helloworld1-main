@@ -11,8 +11,8 @@ include ProjectNameMake
 
 VPATH='./${SRC_DIR};./${BIN_DIR};./${LIB_DIR};./${INC_DIR1};'
 
-SDCC=sdcc.exe
-SDAS=sdasz80.exe
+SDCC=sdcc
+SDAS=sdasz80
 CXX=g++
 OBJCOPY=objcopy
 CFLAGS=-mz80 ${INC_DIR}

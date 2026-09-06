@@ -32,7 +32,8 @@ jobs:
     - name: SDCC-Install
       run: sudo apt update && sudo apt install sdcc gputils && sdcc --version
     - name: Exec
-      run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
+      #run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
+      run: chmod +x Makefile && make p=${{ env.PROJNAME }} e=1 
     - name: Change Dir
       run: cd ./projects/${{ env.PROJNAME }} 
     #- name: Build
@@ -42,7 +43,7 @@ jobs:
       with:
         name: ${{ env.PROJNAME }}
         path: |
-          /bin/*.sms
+          projects/${{ env.PROJNAME }}/bin/*.sms
         if-no-files-found: warn #error
 
   release:
