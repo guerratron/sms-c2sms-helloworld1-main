@@ -2,26 +2,13 @@
 #  PROJECT  #
 #############
 
-# SIMPLEMENTE PARA ESTABLECER EL NOMBRE DEL PROJECTO PARA SER LLAMADO DESDE EL PreMakefile Y A SU VEZ EL Makefile PRINCIPAL.
-
-# REQUISITOS: DEBE EXISTIR UN *.asm CON ESE NOMBRE
-# ESTA PREPARADO PARA UN SOLO ARCHIVO.
-
-# ADMITE UN PARAMETRO OPCIONAL, EJEMPLO DE LLAMADA DESDE CMD:
-# ^> make F=main2
-
-# Capturamos el parámetro o un valor por defecto
-F ?= _xxx_EMPTY
-
-# mi_tarea:
-#	@echo "El archivo objetivo es: '$(FILE_NAME)'"
-
-FILE_NAME:=${F}
-SRC_DIR=.
-BIN_DIR=.
-CRT_S=crt0sms
-TOOLS_DIR=../tools
-CHECKSUMFIX=checksumfix/checksumfix.py
-LIB_DIR=../lib
-INC_DIR1=../inc;../assets/bg;../assets/fonts;../assets/music;../assets/sounds;../assets/sprites;../src
-INC_DIR=-I../inc -I../assets/bg -I../assets/fonts -I../assets/music -I../assets/sounds -I../assets/sprites -I../src
+F ?= hello-world
+FILE_NAME := $(F)
+SRC_DIR := .
+BIN_DIR := .
+LIB_DIR := ../lib
+CRT_S := crt0sms
+TOOLS_DIR := ../tools
+CHECKSUMFIX := checksumfix/checksumfix.py
+INC_DIR := -I../inc -I../assets/music -I../assets/sounds -I../assets/sprites -I../assets/bg -I../assets/fonts -I../src
+INC_DIR1 := ../inc;../assets/music;../assets/sounds;../assets/sprites;../assets/bg;../assets/fonts;../src
