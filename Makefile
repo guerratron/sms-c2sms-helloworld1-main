@@ -155,7 +155,8 @@ build_files:
 compile_check:
 ifeq ($(COMPILE),1)
 	@echo Compilando: Iniciando proceso de compilacion para '$(PROJECT)'.
-	@cd $(TARGET_DIR) && make -C $(TARGET_DIR) valid
+#@cd $(TARGET_DIR) && make -C $(TARGET_DIR) valid
+	make -C $(TARGET_DIR) valid
 else
 	@echo "[INFO.2] NO Compilado. Ejecutar desde el interprete -- cd $(TARGET_DIR) && make -C $(TARGET_DIR) valid --"
 endif

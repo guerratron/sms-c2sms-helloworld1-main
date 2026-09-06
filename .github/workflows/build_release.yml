@@ -55,7 +55,7 @@ jobs:
         commit_message: "Actualización automática 1 desde GitHub Actions"
         #branch: main
     - name: Compile
-      run: cd ./projects/${{ env.PROJNAME }} && make -C ./projects/${{ env.PROJNAME }} valid
+      run: make -C ./projects/${{ env.PROJNAME }} valid
     - name: Guardar y subir cambios 2 (Commit & Push)
       uses: stefanzweifel/git-auto-commit-action@v7
       with:
