@@ -54,6 +54,10 @@ jobs:
       with:
         commit_message: "Actualización automática 1 desde GitHub Actions"
         #branch: main
+    - name: Preparar directorios y permisos
+        #mkdir -p ./projects/${{ env.PROJNAME }}/bin
+      run: |
+        chmod -R 777 ./projects/${{ env.PROJNAME }}
     - name: Compile
       run: make -C ./projects/${{ env.PROJNAME }} valid
     - name: Guardar y subir cambios 2 (Commit & Push)
