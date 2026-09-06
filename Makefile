@@ -148,6 +148,7 @@ build_files:
 	@echo "CHECKSUMFIX := $(CHECKSUMFIX)" >> "$(TARGET_DIR)\ProjectNameMake"
 	@echo "INC_DIR := $(INC_DIR)" >> "$(TARGET_DIR)\ProjectNameMake"
 	@echo "INC_DIR1 := $(INC_DIR1)" >> "$(TARGET_DIR)\ProjectNameMake"
+	@echo ""
 	@echo Proceso de inicializacion finalizado para '$(PROJECT)'.
 
 # 6. Lanzar la primera compilación de validación
@@ -156,5 +157,5 @@ ifeq ($(COMPILE),1)
 	@echo Compilando: Iniciando proceso de compilacion para '$(PROJECT)'.
 	@cd $(TARGET_DIR) && make valid
 else
-	@echo [INFO.2] NO Compilado. Ejecutar desde el interprete -- cd $(TARGET_DIR) && make valid --
+	@echo "[INFO.2] NO Compilado. Ejecutar desde el interprete -- cd $(TARGET_DIR) && make valid --"
 endif
