@@ -156,5 +156,5 @@ ifeq ($(COMPILE),1)
 	@echo Compilando: Iniciando proceso de compilacion para '$(PROJECT)'.
 	@cd $(TARGET_DIR) && make valid
 else
-	@echo [INFO.2] NO Compilado. (ejecutar desde el interprete "cd $(TARGET_DIR) && make valid")
+	@echo [INFO.2] NO Compilado. Ejecutar desde el interprete -- cd $(TARGET_DIR) && make valid --
 endif
