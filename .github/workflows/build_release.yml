@@ -34,8 +34,18 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: SDCC-Install
-      run: sudo apt update && sudo apt install sdcc gputils && sdcc --version
+    
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - name: Instalar SDCC
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y sdcc gputils
+          sdcc --version
+    #- name: SDCC-Install
+    #  run: sudo apt update && sudo apt install sdcc gputils && sdcc --version
     - name: Exec
       #run: chmod +x c2sms.sh && ./c2sms.sh -e ${{ env.PROJNAME }}
       run: make p=${{ env.PROJNAME }} e=1 c=0
