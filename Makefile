@@ -24,8 +24,8 @@ else
 	SOURCES_NAME = _xxx_
 endif
 
-TARGET_DIR = /projects/$(PROJECT)
-BASE_SOURCES = /base/$(SOURCES_NAME)
+TARGET_DIR = ./projects/$(PROJECT)
+BASE_SOURCES = ./base/$(SOURCES_NAME)
 
 # --- Rutas y Directorios ---
 ASM2SMS_DIR  = ASM2SMS
@@ -96,8 +96,8 @@ endif
 create_project:
 	@echo Copying files to '$(TARGET_DIR)' ...
 ifeq ($(wildcard $(TARGET_DIR)/),)
-	cp -r "$(BASE_SOURCES)" "/projects"
-	-mv -u "/projects/$(SOURCES_NAME)" "$(TARGET_DIR)"
+	cp -r "$(BASE_SOURCES)" "./projects"
+	-mv -u "./projects/$(SOURCES_NAME)" "$(TARGET_DIR)"
     _PROJECT_CREATED:=1
 else
 	@echo [INFO.4] NO es necesaria la copia, ya existia con anterioridad ...
