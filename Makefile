@@ -1,6 +1,11 @@
 # =============================================================================
 #             SDCC compiling Makefile initializer v1.3 (Cross-Platform)
 # =============================================================================
+# Herramienta tipo "Scawfolder" para crear projectos para programar en la 
+# "Master System 1" sin necesidad de ninguna librería externa, solo el compilador 
+# "SDCC" y la orden "make". Al ejecutarlo te genera una estructura de carpetas 
+# y el código mínimo para ejecutar 'make' y compilar un juego "sms".
+#  
 # Admite parametro 'p' como nombre de projecto (por defecto 'main'), 'e=1' para 
 # crear un projecto minimo vacio, y 'c=0' para no compilar la solucion.
 # Sintaxis de llamada:
