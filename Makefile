@@ -1,16 +1,21 @@
 # =============================================================================
 #             SDCC compiling Makefile initializer v1.3 (Cross-Platform)
 # =============================================================================
+# Admite parametro 'p' como nombre de projecto (por defecto 'main'), 'e=1' para 
+# crear un projecto minimo vacio, y 'c=0' para no compilar la solucion.
 # Sintaxis de llamada:
 #      make -f init.mk p=MiJuego
 #      make -f init.mk p=MiJuego e=1
+#      make -f init.mk p=MiJuego e=1 c=0
 # =============================================================================
 
 # --- Configuración de Parámetros ---
 p ?= main
 e ?= 0
+c ?= 1
 PROJECT ?= $(p)
 EMPTY ?= $(e)
+COMPILE ?= $(c)
 
 # --- Detección de Modos de Origen ---
 ifeq ($(EMPTY), 1)
@@ -109,12 +114,13 @@ endif
 
 # 5. Generar los archivos dinámicos de configuración
 build_files:
+# Generar PROJECT_NAME.txt
 	@echo Generando archivos de configuracion en el destino...
 	@echo "#############" > "$(TARGET_DIR)\PROJECT_NAME.txt"
 	@echo ";NO-TOCAR ! : CODIFICACION: ASCII, LINEA 1: NOMBRE DEL PROJECTO, LINEA 2: DIRECTORIO DE LOS BINARIOS" >> "$(TARGET_DIR)\PROJECT_NAME.txt"
 	@echo "$(PROJECT)" >> "$(TARGET_DIR)\PROJECT_NAME.txt"
 	@echo "$(BIN_DIR)" >> "$(TARGET_DIR)\PROJECT_NAME.txt"
-# Generar FilenameMake (Windows)
+# Generar FilenameMake
 	@echo "#############" > "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
 	@echo "#  PROJECT  #" >> "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
 	@echo "#############" >> "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
@@ -129,7 +135,7 @@ build_files:
 	@echo "CHECKSUMFIX := $(CHECKSUMFIX)" >> "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
 	@echo "INC_DIR := $(INC_DIR_ASM2SMS)" >> "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
 	@echo "INC_DIR1 := $(INC_DIR1_ASM2SMS)" >> "$(TARGET_DIR)\$(ASM2SMS_DIR)\FilenameMake"
-# Generar ProjectNameMake (Windows)
+# Generar ProjectNameMake
 	@echo "##############" > "$(TARGET_DIR)\ProjectNameMake"
 	@echo "#   PROJECT  #" >> "$(TARGET_DIR)\ProjectNameMake"
 	@echo "##############" >> "$(TARGET_DIR)\ProjectNameMake"
@@ -142,9 +148,13 @@ build_files:
 	@echo "CHECKSUMFIX := $(CHECKSUMFIX)" >> "$(TARGET_DIR)\ProjectNameMake"
 	@echo "INC_DIR := $(INC_DIR)" >> "$(TARGET_DIR)\ProjectNameMake"
 	@echo "INC_DIR1 := $(INC_DIR1)" >> "$(TARGET_DIR)\ProjectNameMake"
-#@echo VPATH := ''\''./$${SRC_DIR};./$${BIN_DIR};./$${LIB_DIR};./$${INC_DIR1};'\''' >> "$(TARGET_DIR)\ProjectNameMake"
+	@echo Proceso de inicializacion finalizado para '$(PROJECT)'.
 
 # 6. Lanzar la primera compilación de validación
 compile_check:
-	@echo Proceso de inicializacion finalizado para '$(PROJECT)'.
+ifeq ($(COMPILE),1)
+	@echo Compilando: Iniciando proceso de compilacion para '$(PROJECT)'.
 	@cd $(TARGET_DIR) && make valid
+else
+	@echo [INFO.2] NO Compilado. (ejecutar desde el interprete "cd $(TARGET_DIR) && make valid")
+endif
