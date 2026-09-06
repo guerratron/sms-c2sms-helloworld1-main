@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "_backs/*": true,
+        "_others/*": true,
+        "tools/*": true,
+        "obj": true,
+        "Debug": true,
+        "DebugColor": true,
+        "Release": true,
+        "ReleaseColor": true,
+        "*.log": true,
+        "*.sln": true,
+        "*.vcxproj*": true,
+        "*.db": true,
+        ".gitignore": true,
+        ".vs": true,
+        "Thumbs.db": true
+    },
+    "files.associations": {
+        "*.h": "c"
+    }
+}

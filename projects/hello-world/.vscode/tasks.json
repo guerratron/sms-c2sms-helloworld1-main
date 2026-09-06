@@ -1,0 +1,60 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Release SDCC",
+            "type": "shell",
+            "command": "sdcc",
+            "args": [
+                //"-m-mcs51", // Tipo de MCU (ej. 8051)
+                "-mz80",
+                "--model-small", // Modelo de memoria
+                "--data-loc 0xC000", //otras banderas
+                " --no-std-crt0",
+                "--out-fmt-ihx",
+                "-I${workspaceFolder}/inc", // <--- RUTA A DEPENDENCIAS (.h)
+                "-L${workspaceFolder}/lib/", // ruta a bibliotecas compiladas
+                //"-lSMSlib", // nombre de bibliotecas compiladas a incluir
+                "-o${workspaceFolder}/build/", // Carpeta de salida
+                "${workspaceFolder}/src/${fileExtname}.c", // Archivo principal
+                //"./src/funciones.c" // otros archivos
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                //"$sdcc"
+            ]
+        },
+        {
+            "label": "Release MAKE",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "isBackground": false,
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Clean MAKE",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "isBackground": false,
+            "args": [
+                "clean"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
