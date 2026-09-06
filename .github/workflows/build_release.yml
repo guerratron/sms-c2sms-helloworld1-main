@@ -55,7 +55,7 @@ jobs:
         commit_message: "Actualización automática 1 desde GitHub Actions"
         #branch: main
     - name: Compile
-      run: cd ./projects/${{ env.PROJNAME }} && make valid
+      run: cd ./projects/${{ env.PROJNAME }} && ./projects/${{ env.PROJNAME }}/make valid
     - name: Guardar y subir cambios 2 (Commit & Push)
       uses: stefanzweifel/git-auto-commit-action@v7
       with:
@@ -66,9 +66,9 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.PROJNAME }}
+        name: ${{ env.PROJNAME }}_art
         path: |
-          projects/${{ env.PROJNAME }}/bin/*.sms
+          ./projects/${{ env.PROJNAME }}/bin/*.sms
         if-no-files-found: warn #error
 
   release:
@@ -81,7 +81,7 @@ jobs:
     - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: ${{ env.PROJNAME }}
+        name: ${{ env.PROJNAME }}_art
     - name: Change Dir
       run: cd ./projects/${{ env.PROJNAME }} 
     - name: Release
