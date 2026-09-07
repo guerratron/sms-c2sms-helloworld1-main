@@ -71,8 +71,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.PROJNAME }}_art
+        #  ./projects/${{ env.PROJNAME }}/bin/*.sms
         path: |
-          ./projects/${{ env.PROJNAME }}/bin/*.sms
+          ./projects/${{ env.PROJNAME }}
         if-no-files-found: warn #error
 
   release:
