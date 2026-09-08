@@ -79,6 +79,11 @@ jobs:
     if: ${{ github.event_name == 'create' }}
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write      # Necesario para crear y subir archivos a la Release
+      discussions: write   # Necesario para asociar la Release a una discusión
     steps:
     - name: Checkout
       uses: actions/checkout@v4
