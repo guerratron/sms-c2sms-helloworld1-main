@@ -96,7 +96,7 @@ jobs:
       # DA errores en la primera línea, dice que esperaba dos argumentos y solo se ha entregado uno, 
       # quizás no interpreta bien el comando "tr"
       run: |
-        OUTPUTS=$({ls ./projects/${{ env.PROJNAME }}/bin/*.sms; } 2>/dev/null | tr '\n' ' ') && \
+        OUTPUTS=$(ls ./projects/${{ env.PROJNAME }}/bin/*.sms; 2>/dev/null | tr '\n' ' ') && \
         echo $OUTPUTS | xargs gh release upload ${{ github.ref_name }} --clobber || \
         echo $OUTPUTS | xargs gh release create ${{ github.ref_name }} --generate-notes --title '${{ github.repository }} ${{ github.ref_name }}' --discussion-category 'Announcements' || \
         echo $OUTPUTS | xargs gh release create ${{ github.ref_name }} --generate-notes --title '${{ github.repository }} ${{ github.ref_name }}'
