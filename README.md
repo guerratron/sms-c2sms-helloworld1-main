@@ -5,13 +5,14 @@
 - Everything needed to build a "Hello, World!" project with "c2sms" from a standing start!
 - Without dependencies, not devKitSMS, not SMSLib, ..
 - Use Github Actions to develop and build in the cloud!
-- Or use the `dist/cmd2sms.zip` archive for `windows` from `bash files` to develop locally with or without Visual Studio Code integration!
+- Or use the `dist/cmd2sms.zip` archive for `windows` from `bash files` or `Makefiles` to develop locally with or without Visual Studio Code integration!
 - Perfect for beginners or those wanting to avoid installing lots of tools to get into SMS development!
 
 ## Prerequisites
 
 - SDCC
 - Make command
+- Python
 
 OR ..
 
