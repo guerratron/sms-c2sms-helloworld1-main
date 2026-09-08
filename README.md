@@ -1,4 +1,4 @@
-# A github template and quickstart project for C2SMS (C programming language) SMS games
+# A github template and quickstart project for C2SMS (C programming language) SMS games (Scaffolder)
 
 ## Features
 
@@ -21,16 +21,18 @@ You can use this project to build your code in the cloud with Github Actions and
 
 ### Using dist/cmd2sms.zip Zip archive standalone
 
-You can use the zip archive directly with `.bat files`, without using it as a Visual Studio Code, without devcontainer, ...
-In this case [only windows] the only prerequisite is SDCC and Make-Command for Desktop Windows.
+You can use the zip archive directly with `.bat files` (o Makefile), without using it as a Visual Studio Code, without devcontainer, ... In this case the only prerequisite is SDCC [and Make-Command for Desktop Windows].  
 
-### Manual tooling setup (windows)
+> A Makefile has also been prepared for those not using Windows.
+
+### Manual tooling setup
 
 You can install all the prerequisites manually if you don't want to use a Github-Actions based solution.
 
 - [SDCC](https://sdcc.sourceforge.net/) - note you will also need to install SDCC as documented
 - [GNU Make](https://www.gnu.org/software/make/) you need the Make command, in Linux NO-PROBLEM, but for Windows you need to install MinGW or similar.
-- exec the `bat/bash files` 
+- [Python 3](https://www.python.org/) You need Python 3 to run a script to sign the sms rom-file.
+- exec the `bat/bash files` o `Makefile`
 
 ## Usage
 
@@ -57,7 +59,7 @@ Also if you want to make a change to your source but skip the automatic build st
 
 ### Overview
 
-This is an opinionated project template with a very basic structure:
+This is an opinionated project template that generates a very basic structure:
 
 - All C source code files (except for generated assets) are inside the `src` folder.
 - All raw asset files are in the `assets` folder.
@@ -69,14 +71,20 @@ The Makefiles supplied with this project allow you to nest your source code one 
 
 ### Makefiles
 
-We've supplied a Makefile setup that should be useful for most projects and reflects our typical setup.
+We've supplied a Makefile setup that should be useful for most projects and reflects our typical setup.  
 
-From your project root folder:
+This first Makefile accepts the `p` parameter as the project name (default is 'main'), `e` to create a minimal empty project, and `c` to compile the solution.  
+Call syntax (ex.):
+    `make -f init.mk p=MiJuego`
+    `make -f init.mk p=MiJuego e=1`
+    `make -f init.mk p=MiJuego e=1 c=0`
+
+Once compiled, it will create the project folder where there will be other **make files** to generate the SMS file. Enter the project folder and:
 - `make` (or `make all`) will run the default top level build which builds assets and source code to produce a final ROM.
 - `make valid` will _only_ compile the `.sms` and the `.asm` and not the source code.
 - `make clean` will wipe all output and generated files from the filesystem and is useful if your build gets in a strange state.
 
-There are many options you can change in the Makefiles to tweak your build, but we recommend that you don't unless you know exactly what you're doing!
+There are many options you can change in the Makefiles to tweak your build, but we recommend that you don't unless you know exactly what you're doing!  
 A few settings have been designed to be overridden from the command line or with environment variables. In particular the `PROJECTNAME` setting can be overridden. If it's not supplied then it will simply take the name of the folder your project is in. You can override the `PROJECTNAME` setting by adding `-e PROJECTNAME=your-new-project-name` to your `make` commands.
 
 More tools will be added in future.
