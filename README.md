@@ -75,10 +75,12 @@ The Makefiles supplied with this project allow you to nest your source code one 
 We've supplied a Makefile setup that should be useful for most projects and reflects our typical setup.  
 
 This first Makefile accepts the `p` parameter as the project name (default is 'main'), `e` to create a minimal empty project, and `c` to compile the solution.  
-Call syntax (ex.):
-    `make -f init.mk p=MiJuego`
-    `make -f init.mk p=MiJuego e=1`
-    `make -f init.mk p=MiJuego e=1 c=0`
+Call syntax (ex.):  
+```shell
+    make -f init.mk p=MiJuego
+    make -f init.mk p=MiJuego e=1
+    make -f init.mk p=MiJuego e=1 c=0
+```
 
 Once compiled, it will create the project folder where there will be other **make files** to generate the SMS file. Enter the project folder and:
 - `make` (or `make all`) will run the default top level build which builds assets and source code to produce a final ROM.
