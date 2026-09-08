@@ -33,7 +33,7 @@ You can install all the prerequisites manually if you don't want to use a Github
 - [SDCC](https://sdcc.sourceforge.net/) - note you will also need to install SDCC as documented
 - [GNU Make](https://www.gnu.org/software/make/) you need the Make command, in Linux NO-PROBLEM, but for Windows you need to install MinGW or similar.
 - [Python 3](https://www.python.org/) You need Python 3 to run a script to sign the sms rom-file.
-- exec the `bat/bash files` o `Makefile`
+- executte the `bat/bash files` o `Makefile`
 
 ## Usage
 
