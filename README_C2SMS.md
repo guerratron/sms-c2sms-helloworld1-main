@@ -62,7 +62,7 @@ Ventana de comandos y ...
 
 o ...
 
-``` > make p=proj1 e=1 c=1```  
+``` > make p=proj1 e=0 c=1```  
 
 ... voilâ ! ya tenemos nuestro projecto de nombre "**proj1**" en el directorio "**projects**"; incluso puede probarse el "**proj1.sms**" generado en un emulador como *"emullicius"*.
 
